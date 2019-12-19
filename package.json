@@ -1,0 +1,21 @@
+{
+  "name": "microfrontend-experiments",
+  "version": "1.0.0",
+  "description": "Microfrontend Experiments",
+  "main": "index.js",
+  "author": "Tarun Kumar Sukhu",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^3.19.0"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/react-scripts",
+      "**/react-scripts/**"
+    ]
+  }
+}
