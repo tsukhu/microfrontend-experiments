@@ -6,7 +6,7 @@ export default class extends Component {
     return false;
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.map.panTo({ lat: nextProps.lat , lng: nextProps.lng})
   }
 
