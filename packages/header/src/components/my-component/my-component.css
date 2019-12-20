@@ -1,9 +1,89 @@
-:host {
+.shadow-class {
+  @apply text-4xl font-bold text-center text-blue-500;
 }
 
-.shadow-class {
-  @apply text-4xl;
-  @apply font-bold;
-  @apply text-center;
-  @apply text-blue-500;
+.nav-root {
+  @apply flex items-center justify-between flex-wrap bg-teal-500 p-6;
+}
+
+.nav-logo {
+  @apply flex items-center flex-shrink-0 text-white mr-6;
+}
+
+.logo-svg {
+  @apply fill-current h-8 w-8 mr-2;
+}
+
+.burger-svg {
+  @apply fill-current h-3 w-3;
+}
+
+.nav-heading {
+  @apply font-semibold text-xl tracking-tight;
+}
+
+.nav-sm-menu {
+  @apply block;
+}
+
+@screen lg {
+  .nav-sm-menu {
+    @apply hidden;
+  }
+}
+
+.burger {
+  @apply flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400;
+}
+
+.burger:hover {
+  @apply text-white border-white;
+}
+
+.nav-items {
+  @apply w-full block flex-grow;
+}
+
+@screen lg {
+  .nav-items {
+    @apply flex items-center w-auto;
+  }
+}
+
+.nav-item {
+  @apply text-sm;
+}
+
+@screen lg {
+  .nav-item {
+    @apply flex-grow;
+  }
+}
+
+.nav-item-text {
+  @apply block mt-4 text-teal-200  mr-4;
+}
+
+.nav-item-text:hover {
+  @apply text-white;
+}
+
+@screen lg {
+  .nav-item-text {
+    @apply inline-block mt-0;
+  }
+}
+
+.nav-btn {
+  @apply inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white mt-4;
+}
+
+.nav-btn:hover {
+  @apply border-transparent text-teal-500 bg-white;
+}
+
+@screen lg {
+  .nav-btn {
+    @apply mt-0;
+  }
 }
