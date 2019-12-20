@@ -15,7 +15,7 @@
 }
 
 .burger-svg {
-  @apply fill-current h-3 w-3;
+  @apply fill-current  h-3 w-3;
 }
 
 .nav-heading {
@@ -33,7 +33,7 @@
 }
 
 .burger {
-  @apply flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400;
+  @apply flex items-center bg-transparent px-3 py-2 border-2 rounded text-teal-200 border-teal-400;
 }
 
 .burger:hover {
@@ -51,7 +51,7 @@
 }
 
 .nav-item {
-  @apply text-sm;
+  @apply text-sm ;
 }
 
 @screen lg {
@@ -61,7 +61,7 @@
 }
 
 .nav-item-text {
-  @apply block mt-4 text-teal-200  mr-4;
+  @apply block mt-4 text-teal-200 mr-4 no-underline;
 }
 
 .nav-item-text:hover {
@@ -75,7 +75,7 @@
 }
 
 .nav-btn {
-  @apply inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white mt-4;
+  @apply inline-block text-sm px-4 py-2 bg-transparent leading-none border-2 rounded text-white border-white mt-4;
 }
 
 .nav-btn:hover {

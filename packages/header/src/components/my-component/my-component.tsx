@@ -75,12 +75,11 @@ export class MyComponent {
             </a>
           </div>
           <div>
-            <a
-              href="#"
+            <button
               class="nav-btn"
             >
               Download
-            </a>
+            </button>
           </div>
         </div>
       </nav>
