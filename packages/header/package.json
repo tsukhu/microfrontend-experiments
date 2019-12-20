@@ -15,7 +15,7 @@
     "loader/"
   ],
   "scripts": {
-    "build": "stencil build --docs",
+    "build": "cross-env NODE_ENV=production stencil build --docs",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
@@ -24,5 +24,14 @@
   "devDependencies": {
     "@stencil/core": "^1.3.3"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@fullhuman/postcss-purgecss": "^1.3.0",
+    "@stencil/postcss": "^1.0.1",
+    "@types/autoprefixer": "^9.6.1",
+    "autoprefixer": "^9.7.3",
+    "cross-env": "^6.0.3",
+    "cssnano": "^4.1.10",
+    "tailwindcss": "^1.1.4"
+  }
 }

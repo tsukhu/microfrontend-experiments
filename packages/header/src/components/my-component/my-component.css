@@ -1,1 +1,9 @@
+:host {
+}
 
+.shadow-class {
+  @apply text-4xl;
+  @apply font-bold;
+  @apply text-center;
+  @apply text-blue-500;
+}
