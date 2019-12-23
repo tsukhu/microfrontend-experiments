@@ -13,6 +13,8 @@
 
 /public/vendor
 
+public/vendor/
+
 /dist
 
 # misc
