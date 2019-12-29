@@ -11,6 +11,8 @@ function App() {
   const [lng, setLng] = useState(150.644);
 
   useEffect(() => {
+    this.refs.svelteRef.addEventListener("svelteEvent", () => alert("Got it"));
+
     loadModule("https://maps.googleapis.com/maps/api/js", "googleMaps", () => {
       // Work to do after the library loads.
       setMapsReady(true);
@@ -40,7 +42,12 @@ function App() {
           last="'Don't call me a framework' JS"
         ></my-component>
       )}
-      {svelteReady && <hello-svelte name="Svelte!"></hello-svelte>}
+      {svelteReady && (
+        <hello-svelte
+          name="Svelte!"
+          ref={elem => (this.svelteRef = elem)}
+        ></hello-svelte>
+      )}
       Map me!
       <button
         onClick={() => {
