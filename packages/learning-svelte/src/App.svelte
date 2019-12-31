@@ -1,6 +1,7 @@
 <script>
   import { tick } from "svelte";
   import ContactCard from "./ContactCard.svelte";
+  import CustomInput from "./CustomInput.svelte";
   import Product from "./Product.svelte";
   import Modal from "./Modal.svelte";
 
@@ -11,10 +12,17 @@
   let formState = "";
   let closable = false;
   let createdContacts = [];
-
+  let agreed;
+  let userNameInput;
+  let customInput;
+  let favColor = "green";
+  let singleFavColor = "red";
   let showModal = false;
+  let enteredEmail ="";
+  let formIsValid = false;
   let text = "This is some dummy text!";
-
+  let price;
+  let val = "Tarun";
   let products = [
     {
       id: "p1",
@@ -82,6 +90,27 @@
       event.target.selectionEnd = selectionEnd;
     });
   }
+
+  $: if (enteredEmail.includes("@")) {
+    formIsValid = true;
+  } else {
+    formIsValid = false;
+  }
+
+  $: console.log(val);
+  $: console.log(price);
+  $: console.log(agreed);
+  $: console.log(favColor);
+  $: console.log(singleFavColor);
+  $: console.log(customInput);
+
+  function setValue(event) {
+    val = event.target.value;
+  }
+
+  function saveData() {
+    console.log(userNameInput.value);
+  }
 </script>
 
 <style>
@@ -92,6 +121,50 @@
   }
 </style>
 
+<hr />
+<h1>Validation</h1>
+<form on:submit|preventDefault>
+  <input type="email" bind:value={enteredEmail} />
+  <button type="submit" disabled={!formIsValid}>Save</button>
+
+</form>
+<hr />
+<h1>Bindings and Forms</h1>
+<CustomInput bind:val bind:this={customInput} />
+<input type="number" bind:value={price} />
+<label for="chbox">
+  <input type="checkbox" id="chbox" bind:checked={agreed} />
+  Agree to Terms?
+</label>
+
+<h1>Favorite Color ?</h1>
+<label>
+  <input type="radio" name="color" value="red" bind:group={favColor} />
+  RED
+</label>
+<label>
+  <input type="radio" name="color" value="green" bind:group={favColor} />
+  GREEN
+</label>
+<label>
+  <input type="radio" name="color" value="blue" bind:group={favColor} />
+  BLUE
+</label>
+
+<select bind:value={singleFavColor}>
+
+  <option value="green">GREEN</option>
+  <option value="red">RED</option>
+  <option value="blue">BLUE</option>
+
+</select>
+
+<hr />
+<input type="text" bind:this={userNameInput} />
+<button on:click={saveData}>Save</button>
+<!-- <input type="text" bind:value={val}> -->
+<!-- <input type="text" value={val}   on:input={setValue}> -->
+<hr />
 <button on:click={() => (showModal = true)}>Show Modal</button>
 {#if showModal}
   <Modal
@@ -109,11 +182,14 @@
   </Modal>
 {/if}
 
+<hr />
 <textarea rows="5" value={text} on:keydown={transform} />
+<hr />
 {#each products as product}
   <Product {...product} on:add-to-cart={addToCart} on:delete={deleteProduct} />
 {/each}
 
+<hr />
 <form id="form">
   <div class="form-control">
     <label for="userName">User Name</label>
