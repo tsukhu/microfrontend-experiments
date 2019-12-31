@@ -78,10 +78,9 @@
       value.slice(selectionEnd);
 
     tick().then(() => {
-    event.target.selectionStart = selectionStart;
-    event.target.selectionEnd = selectionEnd;
-    })
-
+      event.target.selectionStart = selectionStart;
+      event.target.selectionEnd = selectionEnd;
+    });
   }
 </script>
 
