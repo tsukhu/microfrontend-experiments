@@ -28,12 +28,19 @@ button {
   border-radius: 5px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.26);
   cursor: pointer;
+  margin: .25rem;
 }
 
 button:hover,
 button:active {
   background: #e40763;
   border-color: #e40763;
+  box-shadow: 1px 1px 8px rgba(77, 51, 51, 0.26);
+}
+
+button:disabled {
+  background: gray;
+  border-color: darkgray;
   box-shadow: 1px 1px 8px rgba(77, 51, 51, 0.26);
 }
 
