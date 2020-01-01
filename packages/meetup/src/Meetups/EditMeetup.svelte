@@ -1,9 +1,12 @@
 <script>
+  import meetups from "./meetups-store.js";
   import { createEventDispatcher } from "svelte";
-  import { isEmpty,isValidEmail } from "../helpers/validation.js";
+  import { isEmpty, isValidEmail } from "../helpers/validation.js";
   import TextInput from "../UI/TextInput.svelte";
   import Button from "../UI/Button.svelte";
   import Modal from "../UI/Modal.svelte";
+
+  export let id = null;
 
   let title = "";
   let subtitle = "";
@@ -11,6 +14,19 @@
   let email = "";
   let imageUrl = "";
   let description = "";
+
+  if (id) {
+    const unsubscribe = meetups.subscribe(items => {
+      const selectedMeetup = items.find(i => i.id === id);
+      title = selectedMeetup.title;
+      subtitle = selectedMeetup.subtitle;
+      address = selectedMeetup.address;
+      email = selectedMeetup.contactEmail;
+      imageUrl = selectedMeetup.imageUrl;
+      description = selectedMeetup.description;
+    });
+    unsubscribe();
+  }
 
   const dispatch = createEventDispatcher();
 
@@ -20,21 +36,39 @@
   $: descriptionValid = !isEmpty(description);
   $: imageUrlValid = !isEmpty(imageUrl);
   $: emailValid = !isValidEmail(email);
-  $: formIsValid = titleValid && subtitleValid && addressValid && descriptionValid && imageUrlValid && emailValid;
+  $: formIsValid =
+    titleValid &&
+    subtitleValid &&
+    addressValid &&
+    descriptionValid &&
+    imageUrlValid &&
+    emailValid;
 
   function submitForm() {
-    dispatch("save", {
+    const meetupData = {
       title: title,
       subtitle: subtitle,
-      address: address,
-      email: email,
+      description: description,
       imageUrl: imageUrl,
-      description: description
-    });
+      contactEmail: email,
+      address: address
+    };
+    if (id) {
+      meetups.updateMeetup(id, meetupData);
+    } else {
+      meetups.addMeetup(meetupData);
+    }
+
+    dispatch("save");
   }
 
   function cancel() {
     dispatch("cancel");
+  }
+
+  function deleteMeetup() {
+    meetups.removeMeetup(id);
+    dispatch("save");
   }
 </script>
 
@@ -99,6 +133,11 @@
   </form>
   <div slot="footer">
     <Button type="button" mode="outline" on:click={cancel}>Cancel</Button>
-    <Button type="button" on:click={submitForm} disabled={!formIsValid}>Save</Button>
+    <Button type="button" on:click={submitForm} disabled={!formIsValid}>
+      Save
+    </Button>
+    {#if id}
+      <Button type="button" on:click={deleteMeetup}>Delete</Button>
+    {/if}
   </div>
 </Modal>
