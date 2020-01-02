@@ -47,14 +47,14 @@
   const dispatch = createEventDispatcher();
 
   $: filteredMeetups = favsOnly
-    ? loadedMeetups.filter(m => m.isFavorite)
-    : loadedMeetups;
+    ? fetchedMeetups.filter(m => m.isFavorite)
+    : fetchedMeetups;
 
   onMount(() => {
-    unsubscribe = meetups.subscribe(items => {
-      loadedMeetups = items;
-    });
     meetups.setMeetups(fetchedMeetups);
+    unsubscribe = meetups.subscribe(items => {
+      fetchedMeetups = items;
+    });
   });
 
   onDestroy(() => {
