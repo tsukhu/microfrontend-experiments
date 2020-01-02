@@ -26,6 +26,10 @@
     grid-gap: 1rem;
   }
 
+  #no-meetups {
+    margin: 1rem;
+  }
+
   #meetup-controls {
     margin: 1rem;
     display: flex;
@@ -44,7 +48,9 @@
   <Button on:click={() => dispatch('add')}>New Meetup</Button>
 
 </section>
-
+{#if filteredMeetups.length === 0}
+  <p id="no-meetups">No Meetups Found, you can start adding some</p>
+{/if}
 <section id="meetups">
   {#each filteredMeetups as meetup (meetup.id)}
     <div transition:scale animate:flip={{ duration: 300 }}>
