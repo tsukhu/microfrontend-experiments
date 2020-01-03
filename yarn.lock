@@ -10683,6 +10683,11 @@ react-scripts@3.2.0:
   optionalDependencies:
     fsevents "2.0.7"
 
+react-svelte@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-svelte/-/react-svelte-1.0.2.tgz#88ae48573b861b5fb39e38bb3fe1b4c255cd72d5"
+  integrity sha512-Wijv7SUxhZ89fE8U6/qp86zaud6sU7PSWL4Sx2FyTuT6LjdUUS5kbji4a0fGGrU2RW7jSSRC5r7g44SLV/KNjg==
+
 react@^16.12.0:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.12.0.tgz#0c0a9c6a142429e3614834d5a778e18aa78a0b83"

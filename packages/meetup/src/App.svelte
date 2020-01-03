@@ -71,7 +71,7 @@
 </script>
 
 <style>
-  main {
+  #meetup-main {
     margin-top: 5rem;
   }
 </style>
@@ -80,9 +80,9 @@
   <Error message={error.message} on:cancel={clearError} />
 {/if}
 
-<Header />
+<!-- <Header /> -->
 
-<main>
+<div id="meetup-main">
   {#if page === 'overview'}
     {#if editMode === 'edit'}
       <EditMeetup id={editedId} on:save={saveMeetup} on:cancel={cancelEdit} />
@@ -99,4 +99,4 @@
   {:else}
     <MeetupDetail id={pageData.id} on:close={closeDetails} />
   {/if}
-</main>
+</div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./App.css";
 import Skeleton from "react-loading-skeleton";
+// import SvelteComponent from 'react-svelte';
 import loadModule from "./loadModule";
 import GoogleMap from "./GoogleMap";
 
@@ -18,12 +19,12 @@ function App() {
   // let svelteRef = React.createRef();
 
   useEffect(() => {
-    if (meetupReady === false) {
+     if (meetupReady === false) {
       loadModule("http://localhost:7002/bundle.js", null, "meetupApp", () => {
         // Work to do after the library loads.
         setMeetupReady(true);
       });
-    }
+    } 
   }, [meetupReady]);
 
   useEffect(() => {
