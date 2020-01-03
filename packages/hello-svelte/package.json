@@ -17,6 +17,7 @@
     "autobuild": "rollup -c -w",
     "dev": "run-p start:dev autobuild",
     "start": "sirv public",
+    "mf:serve": "yarn build && yarn start",
     "start:dev": "sirv public --dev"
   }
 }

@@ -1,9 +1,9 @@
 .shadow-class {
-  @apply text-4xl font-bold text-center text-blue-500;
+  @apply text-4xl font-bold text-center text-pink-500;
 }
 
 .nav-root {
-  @apply flex items-center justify-between flex-wrap bg-teal-500 p-6;
+  @apply flex items-center justify-between flex-wrap bg-red p-6;
 }
 
 .nav-logo {
@@ -33,7 +33,7 @@
 }
 
 .burger {
-  @apply flex items-center bg-transparent px-3 py-2 border-2 rounded text-teal-200 border-teal-400;
+  @apply flex items-center bg-transparent px-3 py-2 border-2 rounded text-pink-200 border-teal-400;
 }
 
 .burger:hover {
@@ -61,7 +61,7 @@
 }
 
 .nav-item-text {
-  @apply block mt-4 text-teal-200 mr-4 no-underline;
+  @apply block mt-4 text-pink-200 mr-4 no-underline;
 }
 
 .nav-item-text:hover {
@@ -75,11 +75,11 @@
 }
 
 .nav-btn {
-  @apply inline-block text-sm px-4 py-2 bg-transparent leading-none border-2 rounded text-white border-white mt-4;
+  @apply bg-transparent  text-sm font-semibold font-semibold py-2 px-4 border border-blue-500 text-white border-white rounded mt-4;
 }
 
 .nav-btn:hover {
-  @apply border-transparent text-teal-500 bg-white;
+  @apply border-transparent text-pink-500 bg-white;
 }
 
 @screen lg {

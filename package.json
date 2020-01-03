@@ -9,6 +9,10 @@
   "devDependencies": {
     "lerna": "^3.19.0"
   },
+  "scripts": {
+    "mf:start":  "lerna run mf:start --stream",
+    "mf:serve":  "lerna run mf:serve --stream"
+  },
   "workspaces": {
     "packages": [
       "packages/*"
