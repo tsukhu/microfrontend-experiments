@@ -5,6 +5,52 @@ import Skeleton from "react-loading-skeleton";
 import loadModule from "./loadModule";
 import GoogleMap from "./GoogleMap";
 
+const microAppConfig = [
+  {
+    name: "Navibar",
+    type: "web-component",
+    styles: [
+    ],
+    scripts: [
+      {
+        src: "http://localhost:7001/header/header.js",
+        target: "appHeader"
+      }
+    ],
+    events: []
+  },
+  {
+    name: "Meetup App",
+    type: "widget",
+    styles: [
+      "http://localhost:7002/global.css",
+      "http://localhost:7002/bundle.css"
+    ],
+    scripts: [
+      {
+        src: "http://localhost:7002/bundle.js",
+        target: "meetupApp"
+      }
+    ],
+    events: []
+  },
+  {
+    name: "Hello Svelte",
+    type: "web-component",
+    styles: [],
+    scripts: [
+      {
+        src: "http://localhost:5000/bundle.js",
+        target: "svelteHello"
+      }
+    ],
+    events: [
+      {
+        name: "svelteEvent"
+      }
+    ]
+  }
+];
 function App() {
   const [mapsReady, setMapsReady] = useState(false);
   const [headerReady, setHeaderReady] = useState(false);
@@ -12,19 +58,55 @@ function App() {
   const [meetupReady, setMeetupReady] = useState(false);
   const [lat, setLat] = useState(-34.397);
   const [lng, setLng] = useState(150.644);
-
+  const [globalStylesReady, setGlobalStylesReady] = useState(false);
+  const [meetupStylesReady, setMeetupStylesReady] = useState(false);
   const svelteRef = useRef(null);
   const [svelteListener, setSvelteListener] = useState(null);
 
   // let svelteRef = React.createRef();
 
   useEffect(() => {
-     if (meetupReady === false) {
+    if (globalStylesReady === false) {
+      loadModule(
+        "http://localhost:7002/global.css",
+        "css",
+        "meetupApp",
+        () => {
+          // Work to do after the library loads.
+          setGlobalStylesReady(true);
+        },
+
+        () => {
+          console.log("Unable to load global styles");
+          setGlobalStylesReady(false);
+        }
+      );
+    }
+
+    if (meetupStylesReady === false) {
+      loadModule(
+        "http://localhost:7002/bundle.css",
+        "css",
+        "meetupApp",
+        () => {
+          // Work to do after the library loads.
+          setMeetupStylesReady(true);
+        },
+
+        () => {
+          console.log("Unable to load global styles");
+          setGlobalStylesReady(false);
+        }
+      );
+    }
+  }, [globalStylesReady, meetupStylesReady]);
+  useEffect(() => {
+    if (meetupReady === false) {
       loadModule("http://localhost:7002/bundle.js", null, "meetupApp", () => {
         // Work to do after the library loads.
         setMeetupReady(true);
       });
-    } 
+    }
   }, [meetupReady]);
 
   useEffect(() => {
@@ -48,6 +130,7 @@ function App() {
 
   useEffect(() => {
     if (!headerReady) {
+      console.log("called");
       loadModule(
         "http://localhost:7001/header/header.js",
         null,
@@ -71,8 +154,11 @@ function App() {
         "googleMaps",
         () => {
           // Work to do after the library loads.
-          if (typeof window.google !== "undefined") setMapsReady(true);
-          else setMapsReady(false);
+          if (typeof window.google !== "undefined") {
+            setMapsReady(true);
+          } else {
+            setMapsReady(false);
+          }
         },
         () => {
           setMapsReady(false);

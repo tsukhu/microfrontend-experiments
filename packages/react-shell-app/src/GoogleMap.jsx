@@ -7,6 +7,7 @@ export default class extends Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
+    console.log('will receive called')
     this.map.panTo({ lat: nextProps.lat , lng: nextProps.lng})
   }
 

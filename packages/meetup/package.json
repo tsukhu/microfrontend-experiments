@@ -19,5 +19,8 @@
     "start": "sirv public",
     "start:dev": "sirv public --dev",
     "mf:serve": "yarn build && sirv public --cors --port 7002"
+  },
+  "dependencies": {
+    "@rollup/plugin-buble": "^0.21.0"
   }
 }
