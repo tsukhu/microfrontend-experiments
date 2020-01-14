@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
@@ -7,11 +8,20 @@
 
   <script type="module" src="/build/header.esm.js"></script>
   <script nomodule src="/build/header.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+  <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"
+    integrity="sha256-xKeoJ50pzbUGkpQxDYHD7o7hxe0LaOGeguUidbq6vis=" crossorigin="anonymous"></script>
+
   <link href="/build/header.css" rel="stylesheet" />
 </head>
-<body>
 
-  <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
 
+<body >
+
+  <nav-container>
+    <div slot="main-content" >I'll be placed before the h1</div>
+  </nav-container>
 </body>
+
 </html>

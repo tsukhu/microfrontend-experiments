@@ -10,53 +10,47 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
-  interface MyComponent {
-    /**
-    * The first name
-    */
-    'first': string;
-    /**
-    * The last name
-    */
-    'last': string;
-    /**
-    * The middle name
-    */
-    'middle': string;
-  }
+  interface MainNav {}
+  interface NavContainer {}
+  interface SideNav {}
 }
 
 declare global {
 
 
-  interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
-  var HTMLMyComponentElement: {
-    prototype: HTMLMyComponentElement;
-    new (): HTMLMyComponentElement;
+  interface HTMLMainNavElement extends Components.MainNav, HTMLStencilElement {}
+  var HTMLMainNavElement: {
+    prototype: HTMLMainNavElement;
+    new (): HTMLMainNavElement;
+  };
+
+  interface HTMLNavContainerElement extends Components.NavContainer, HTMLStencilElement {}
+  var HTMLNavContainerElement: {
+    prototype: HTMLNavContainerElement;
+    new (): HTMLNavContainerElement;
+  };
+
+  interface HTMLSideNavElement extends Components.SideNav, HTMLStencilElement {}
+  var HTMLSideNavElement: {
+    prototype: HTMLSideNavElement;
+    new (): HTMLSideNavElement;
   };
   interface HTMLElementTagNameMap {
-    'my-component': HTMLMyComponentElement;
+    'main-nav': HTMLMainNavElement;
+    'nav-container': HTMLNavContainerElement;
+    'side-nav': HTMLSideNavElement;
   }
 }
 
 declare namespace LocalJSX {
-  interface MyComponent {
-    /**
-    * The first name
-    */
-    'first'?: string;
-    /**
-    * The last name
-    */
-    'last'?: string;
-    /**
-    * The middle name
-    */
-    'middle'?: string;
-  }
+  interface MainNav {}
+  interface NavContainer {}
+  interface SideNav {}
 
   interface IntrinsicElements {
-    'my-component': MyComponent;
+    'main-nav': MainNav;
+    'nav-container': NavContainer;
+    'side-nav': SideNav;
   }
 }
 
@@ -66,7 +60,9 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
-      'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+      'main-nav': LocalJSX.MainNav & JSXBase.HTMLAttributes<HTMLMainNavElement>;
+      'nav-container': LocalJSX.NavContainer & JSXBase.HTMLAttributes<HTMLNavContainerElement>;
+      'side-nav': LocalJSX.SideNav & JSXBase.HTMLAttributes<HTMLSideNavElement>;
     }
   }
 }

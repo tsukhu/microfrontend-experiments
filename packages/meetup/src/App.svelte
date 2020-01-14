@@ -82,7 +82,7 @@
 
 <!-- <Header /> -->
 
-<div id="meetup-main">
+<div id="meetup-main" >
   {#if page === 'overview'}
     {#if editMode === 'edit'}
       <EditMeetup id={editedId} on:save={saveMeetup} on:cancel={cancelEdit} />

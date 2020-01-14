@@ -27,10 +27,7 @@ export const config: Config = {
     postcss({
       plugins: [
         require("tailwindcss")("./tailwind.config.js"),
-        autoprefixer({
-          browsers: ['last 6 versions'],
-          cascade: true
-        }),
+        autoprefixer(),
         ...(process.env.NODE_ENV === "production"
           ? [purgecss, require("cssnano")]
           : [])
